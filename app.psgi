@@ -13,6 +13,7 @@ use Path::Class;
 my $router = Router::Simple->new;
 my $x = Text::Xslate->new(
     cache => 0,
+    verbose => 2,
     path => [ Data::Section::Simple->new()->get_data_section() ]
 );
 
