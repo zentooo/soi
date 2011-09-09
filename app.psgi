@@ -24,7 +24,8 @@ my $app = sub {
         my $res = $req->new_response(200);
 
         my $handler = $match->{action};
-        $handler->($req, $res);
+        my $html = $handler->($req, $res);
+        $res->body($html) if $html;
         return $res->finalize;
     }
     else {
@@ -47,7 +48,7 @@ sub post {
 
 get '/' => sub {
     my ($req, $res) = @_;
-    $res->body($x->render("index.tx", +{ title => 'soi' }));
+    $x->render("index.tx", +{ title => 'soi' });
 };
 
 
